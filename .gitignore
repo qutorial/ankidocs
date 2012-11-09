@@ -25,3 +25,15 @@
 *.maf
 *.mtc
 *.mtc0
+#Kate
+*.*~
+#LaTeX interm res
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+#Result
+idea.pdfidea.bib.bak
+idea.tex.backup
