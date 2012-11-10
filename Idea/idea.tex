@@ -62,7 +62,7 @@ resulting work. We mention here the desired process model, we are going to take 
 
 \pagebreak
 
-\section{Introduction}
+\section{Description of the project}
 \label{sec:intro}
 AnkiDroid is an Android user interface (UI) for the bigger Anki project. The project contains desktop cross-platform 
 application, web-application and services, as well as mobile client or UI. 
@@ -186,22 +186,92 @@ Thus development features on top of such application:
 
 
 
-\section{Standards overview, short comparison}
+\section{List of tasks}
 
-%\begin{figure}[t]
-%\centering
-%\label{fig:Importantpoints}
-%\includegraphics[width=14cm]{Focus}
-%\caption{Safety Standards}
-%\end{figure}
+Here we present the concrete list of functions, we want to implement during the project run.
+We also provide rough time estimation, however, it should be noticed, that since we are dealing
+here with a complex project, and each feature requires complete integration before completion,
+which can cause additional, not planned tasks (re-factoring, existing bugs fixing, etc.),
+it is not possible to precisely predict the amount of time, we will have to spend on accomplishment.
+That is why we present an open list of tasks, which we see now, and we will try to accomplish as much
+as possible during the project run, and within the dedicated time slot. After the project time
+is over, we will present more detailed per-hour report on what has been done, bound to the artifacts,
+so it will be possible to track, what has been really done.
 
-In electrical, electronic and programmable electronic  (E/E/PE) systems development certain standards
-exist. Following the standards is necessary, in particular, for the end product to pass the certification
-and be allowed for production and usage.
+Here we give the estimation from below, and whenever it is impossible on the current stage,
+to predict, how much time a certain step is going to require, we use question mark sign. 
+If a sub-task with unknown time appears N times, the parent task in the time estimation
+is going to have + N x ?. 
 
-The safety standards are usually application-domain specific.
+During the discussion of potential features to implement with the original developer (Nicolas Raoul),
+we got also approximate time estimation, which we show here in square brackets. The approximation
+by original author are ``if all goes well'' positive and were made without considering detailed
+implementation issues we can face. However, they are used to ``validate'' our estimations.
 
-What we're talking about (see Figure \ref{fig:Importantpoints}).
+\begin{enumerate}
+ \item Existing code base learning, development preparation: 18 + 1 x ? hrs.
+       \begin{itemize}
+        \item Getting the code for AnkiDroid run : 3 hrs.
+        \item Analyzing the program structure, documentation: 5 hrs.
+        \item Learning third-party libraries, used in the program: 2 hrs.
+        \item Analyzing existing web services and the way they are used: 5 hrs.
+        \item Analyzing the desktop client and interoperability requirements: 3 hrs.
+        \item Setting up the web services substitution for development purposes: ? hrs.        
+       \end{itemize}
+
+\item Adding picture to a card (from another app, intents): 13 + 2 x ? hrs. [40 hrs.]
+      \begin{itemize}
+       \item Analyze, how the additional information can be stored with web-services: 1 hr.
+       \item Analyze, if the reformatting of picture (shrinking) is needed and the way to do it: 1 hr.
+       \item Implementing the reformatting of the image: ? hrs.
+       \item Extending UI to allow picture insertion: 3 hrs.
+       \item Integrating with the web services: ? hrs.
+       \item Validation of functionality and testing: 4 hrs.
+       \item Code-review, last refactorings and release: 4 hrs.
+      \end{itemize}
+      
+ \item Adding sound to a card (from another app, intents): 14 + 2 x ? hrs. [40 hrs.]
+      \begin{itemize}
+       \item Analyze, how the additional information can be stored with web-services: 1 hr.
+       \item Analyze, if certain compression algorithm/audio format has to be used: 2 hr.
+       \item Implementing the compression/reformatting: ? hrs.
+       \item Extending UI to allow sound insertion: 3 hrs.
+       \item Integrating with the web services: ? hrs.
+       \item Validation of functionality and testing: 4 hrs.
+       \item Code-review, last refactorings and release: 4 hrs.
+      \end{itemize}
+
+\item Adding image search in the application: 39 hrs. [40 hrs.]
+  \begin{itemize}
+   \item Analyzing Google API/Interface to search for an image: 2 hrs.
+   \item Developing a program to fetch image results from Google: 10 hrs.
+   \item Developing UI for the user to request for image: 5 hrs.
+   \item Developing UI to show multiple results, fetched from Google: 10 hrs.
+   \item Reusing the reformatting algorithm from the adding image part: 5 hrs.
+   \item Validation of functionality and testing: 4 hrs.
+   \item Code-review, last refactorings and release: 4 hrs.
+  \end{itemize}
+
+\item Loading from web pronunciation of words: 63 hrs. [40 hrs.]
+  \begin{itemize}
+   \item Research on the services to be used: 5 hrs.
+   \item When concrete services are defined, research on the APIs to use: 10 hrs.
+   \item Developing UI for the user to request for sound: 5 hrs.
+   \item Developing a program to fetch sound results from services: 20 hrs.
+   \item Developing UI to show multiple results, fetched from services: 10 hrs.
+   \item Reusing the reformatting/compression algorithm from the adding sound part: 5 hrs.
+   \item Validation of functionality and testing: 4 hrs.
+   \item Code-review, last refactorings and release: 4 hrs.
+  \end{itemize}
+
+   
+
+\end{enumerate}
+
+
+
+
+
 
 
 \section{Development cycle intro, V-Model}
