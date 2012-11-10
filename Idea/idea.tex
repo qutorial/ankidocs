@@ -21,7 +21,6 @@
 \usepackage{amsfonts}
 \usepackage[latin1]{inputenc}
 
-
 \bibliographystyle{chicago} 
 \citestyle{agsm}
 
@@ -64,6 +63,7 @@ resulting work. We mention here the desired process model, we are going to take 
 
 \section{Description of the project}
 \label{sec:intro}
+\subsection{Anki software}
 AnkiDroid is an Android user interface (UI) for the bigger Anki project. The project contains desktop cross-platform 
 application, web-application and services, as well as mobile client or UI. 
 
@@ -79,17 +79,14 @@ sharing decks on the web server, exchanging decks with other Anki users, synchro
 different Anki clients a single user may run.
 
 
-
-
-
 Potential usages for the learning application with cards could be, \citet{ankinet}:
 \begin{enumerate}
   \item learning a language
   \item studying for medical and law exams
   \item memorizing people's names and faces
   \item brushing up on geography
-  \item mastering long poems
   \item practicing guitar chords
+  \item mastering long poems  
 \end{enumerate}
 plus, what we identified is could also be possible:
 \begin{enumerate}
@@ -100,16 +97,18 @@ plus, what we identified is could also be possible:
   \item developing visual memory
 \end{enumerate}
 
-However, the full capability of all learning techniques can only be achieved by a powerful enough cards
+The full capability of all learning techniques can only be achieved by a powerful enough cards
 application, which would support different sorts of content on the cards. For example, to study formulas
 (either in chemistry, or mathematics) the graphical content would be much more appropriate, than textual.
 To memorize people's names and faces, as the project creator suggest, also photos are essential. Learning
 a foreign language put other demands on the application: it has to support pronunciation of complicated words,
-(like ``Wiedervereinigung'', German for reuniting, or ``Dostoprimechatelnosti'', Russian for sights), as well 
+(like ``Wiedervereinigung'', German for reuniting, or 
+``Dostoprimechatelnosti'', Russian for sights), as well 
 as different fonts, to show Arabic spelling or hieroglyphs.
 
+\subsection{AnkiDroid and its limitations}
 
-Displaying of such content is a must for the application. However, on a modern mobile device, the creation 
+Displaying of content as described in a previous subsection is a must for the application. Additionaly, on a modern mobile device, the creation 
 of such content could be especially productive, due to high interactivity level with the user. One could imagine
 recording voice from the microphone, capturing photos on the camera, or drawing illustrations with the sensor 
 screen capabilities.
@@ -158,6 +157,7 @@ way the application. Trying to implement some of the mentioned features for the 
 \caption{AnkiDroid Screenshot : Displaying learning progress}
 \end{figure}
 
+\subsection{Real-world project}
 
 It is worth mentioning, that dislike many existing student toy-applications, the modification of AnkiDroid represents a real world project.
 The application for the Android under question is not only extremely popular (more than 100.000 downloads), but is also very reliable,
@@ -188,6 +188,8 @@ Thus development features on top of such application:
 
 \section{List of tasks}
 
+\subsection{Approach to handle time and estimation}
+
 Here we present the concrete list of functions, we want to implement during the project run.
 We also provide rough time estimation, however, it should be noticed, that since we are dealing
 here with a complex project, and each feature requires complete integration before completion,
@@ -207,6 +209,8 @@ During the discussion of potential features to implement with the original devel
 we got also approximate time estimation, which we show here in square brackets. The approximation
 by original author are ``if all goes well'' positive and were made without considering detailed
 implementation issues we can face. However, they are used to ``validate'' our estimations.
+
+\subsection{Features to implement}
 
 \begin{enumerate}
  \item Existing code base learning, development preparation: 18 + 1 x ? hrs.
@@ -264,65 +268,62 @@ implementation issues we can face. However, they are used to ``validate'' our es
    \item Code-review, last refactorings and release: 4 hrs.
   \end{itemize}
 
-   
+\item Extending text editing with some rich text features: 58 hrs. [estimated to take ``a lot of time'', depending on features]
+  \begin{itemize}
+   \item Planning, which basic richt text features are necessary (initially i, b, u, colors) : 1 hr.
+   \item Designing architecture, way to implement, to be compatible with other Anki clients: 2 hrs.
+   \item Implementation of basic rich text features: 40 hrs.
+   \item Validation of functionality and testing: 10 hrs.
+   \item Code-review, last refactorings and release: 5 hrs.
+  \end{itemize}
 
+  
+\item Integrating support for dictionaries/information sources: 99 hrs. [24 hrs. per source]
+  \begin{itemize}
+   \item Analyzing existing application abilities, to determine best source (language, type of cards): 1 hr.
+   \item Research on existing applications, supporting similar functionality, and their implementation (GoldenDict): 3 hrs.
+   \item Research on the potential sources to include and their APIs (Wikipedia, Online dictioaries): 5 hrs.
+   \item Universal algorithm and UI to ask user for certain source, getting result back on the cards, using richt text features: 10 hrs.
+   \item Support for each source: 20 hrs. [ 24 hrs. ] x number of sources (3 for a start) = 60 hrs.
+   \item Validation of functionality and testing: 5 hrs.
+   \item Code-review, last refactorings and release: 5 hrs.   
+  \end{itemize}
+\end{enumerate}
+
+\subsection{Overall time estimation and reasons for deviations}
+
+Taking each ? to be 5 hours we end up with 329 hours approximately. This is an approximation from below, or optimistic 
+approximation. To be on the safe side, not having more than 400 hours of work, we suggest, this must be enough for the project.
+Important to notice, is that the tasks above do not include documenting, which may be necessary, and not only for the course 
+purposes, but also for the Anki project itself. Another not included in the tasks, but very important for calculating time issue
+is bug fixing. We may need to fix existing bug, before we proceed with new feature.
+
+Potential danger in the project run, as we see now, is the dependency of the features. For example, loading pronunciation from
+the Web depends on a feature to have sound included in the card. Thus, having delays with initial features, it could be
+that the some of the features will not be implemented on time. As a justification for such delays, on the case they happen,
+we plan to provide technical report, explaining the difficulties on the way, causing the delay (for example, bigger than 5 hours
+time for ? items in the list).
+
+\subsection{Additional features}
+
+If the development goes well, and better than we expect, we have also many additional, ``nice to have'' features, which
+we could implement:
+\begin{enumerate}
+ \item Better UI support for Tablet devices, and if possible-Google TV (Tablet device would be needed)
+ \item Support for finger drawing (complicated UI, no standard intents)
+ \item Accessibility for people with disabilities (research is needed first)
+ \item Fixing the list viewing (current well-known bug, not hard to implement)
+ \item Fixing ``white squares bug'' - some new fonts are needed to display all languages (hard task, because includes installing new fonts)
+ \item Support for videos (research for necessity is needed, similar to sound and pictures issue)
 \end{enumerate}
 
 
+\section{Suggested working style}
 
 
 
-
-
-\section{Development cycle intro, V-Model}
-
-
-\section{Standard Case : ISO 26262}
-\subsection{System Level Development}
-\subsection{Development on the Software Level}
-
-
-\section{Introduction to Safety Integrity Classes}
-
-The core points, concisely explained with a clear content derivation. (See Table \ref{tab:boringdetails}, more details in section \ref{sec:details}).
-
-explains the basics of functional safety.
-
-\begin{table*}[h]
-\centering
-\label{tab:boringdetails}
-\begin{tabular}{|c|c|l|} \hline
-C & C & C\\ \hline\hline
-text & 100 & text \\ \hline
-text & 200 & text \\ \hline
-text & 300 & text \\ \hline
-text & 400 & text \\ \hline
-\end{tabular}
-\caption{For tabular representations}
-\end{table*}
-
-%\input{additionalfile} 
-
-\section{Conclusion}
-
-Lessons learned or especially noteworthy info.
-
-
-
+\pagebreak
 
 \bibliography{idea}
-
-
-
-\begin{appendix}
-\section{Appendix and addendums}
-\label{sec:details}
-
-%\input{details}	
-
-Special focus areas or extra info that is not specifically placeable within the above sequences.
-
-\end{appendix}
-
 
 \end{document}
